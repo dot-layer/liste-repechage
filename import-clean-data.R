@@ -9,20 +9,26 @@ tables <- html %>%
 tables <- lapply(tables, html_table, fill=T)
 tables <- tables[-1]
 
-main <- as.data.table(do.call(cbind, tables))[-1,]
+temp <- as.data.table(do.call(cbind, tables))[-1,]
 
-head(main)
-names(main) <- unlist(main[1,])
-names(main) <- gsub("\n", "", names(main))
+head(temp)
+names(temp) <- unlist(temp[1,])
+names(temp) <- gsub("\n", "", names(temp))
 
-str(main)
+str(temp)
 
-main <- main[-1,]
-ind <- c(which(main[1,] == "1"),
-  which(is.na(main[1,])))
+temp <- temp[-1,]
+ind <- c(which(temp[1,] == "1"),
+  which(is.na(temp[1,])))
 
-main <- subset(main,select = -ind)
+temp <- subset(temp,select = -ind)
 
+main <- data.frame(ranker = NULL, rank = NULL, player = NULL)
+
+main <- rbindlist(lapply(1:ncol(temp), function(k){
+  temp2 <- subset(temp,select=k)
+  cbind(data.table(ranker = names(temp2) ,rank = 1:nrow(temp2)),temp2)
+}))
 
 head(main)
 
