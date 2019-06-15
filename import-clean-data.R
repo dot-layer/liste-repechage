@@ -20,7 +20,7 @@ str(temp)
 temp <- temp[-1,]
 ind <- c(which(temp[1,] == "1"),
   which(is.na(temp[1,])),
-  which(grepl("European", names(temp))))
+  which(grepl("European|NA Skaters", names(temp))))
 
 temp <- subset(temp,select = -ind)
 
@@ -34,6 +34,20 @@ main <- rbindlist(lapply(1:ncol(temp), function(k){
 }))
 
 head(main)
+
+correction_mapping <- data.table(
+  player = c("Kakko Kaapo", "Vasily Podkolzin", "Ville Henola", "Mortiz Seider", "Ilya Nikolaev", "Brett RE Leason", "Phillip Tomasino"),
+  right = c("Kaapo Kakko", "Vasili Podkolzin", "Ville Heinola", "Moritz Seider", "Ilya Nikolayev", "Brett Leason", "Philip Tomasino")
+)
+
+setkey(main, player)
+setkey(correction_mapping, player)
+
+main_temp <- merge(main, correction_mapping, all = TRUE)
+
+main_temp[grepl("Dach", player), player:= "Kirby Dach"]
+
+main <- main_temp[, player := ifelse(is.na(right), player, right)]
 
 fwrite(main, "data/main.R")
 
