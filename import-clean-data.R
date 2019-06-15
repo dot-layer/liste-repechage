@@ -15,9 +15,16 @@ head(main)
 names(main) <- unlist(main[1,])
 names(main) <- gsub("\n", "", names(main))
 
-main <- main[-1,]
-main <- main[, X6 := NULL]
+str(main)
 
+main <- main[-1,]
+ind <- c(which(main[1,] == "1"),
+  which(is.na(main[1,])))
+
+main <- subset(main,select = -ind)
 
 
 head(main)
+
+fwrite(main, "data/main.R")
+
