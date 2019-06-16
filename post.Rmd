@@ -11,6 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Dans le cadre de la fin de semaine d'analytique de sports récemment organisée par des .Layeuriens, nous avons construit une petite routine qui aggrège différents *draft rankings* pour en former un unique.
 Pardonnez le manque d'explication lolk.
+En passant, allez voir le ShinyApp créé par d'autres participants de la fin de semaine (un truc de tennis).
 
 ## rvest
 En gros, nous avons *rvest* des listes [mynhldraft.com](http://www.mynhldraft.com/2019-nhl-draft/2019-nhl-draft-rankings/) :
