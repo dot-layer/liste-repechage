@@ -78,7 +78,7 @@ by_player <-
  LAURENT -- ICI ON FAIT UN CALL À by_player pour montrer par exemple le ranking final.
 ```
 
-```{r baseline, include=FALSE}
+```{r baseline, echo=FALSE}
 # SAVE UNE COPIE DE by_player ET ON LA CALL ICI
 # RECOPIE LE CALL ICI
 ```
@@ -86,7 +86,7 @@ by_player <-
 ## Multi-dimensional scaling
 
 Avec le temps qu'il nous restait, nous avons ensuite décidé de construire une matrice de distance (entre les joueurs) calculée en considérant le vecteurs des rangs :
-```{r, include=FALSE}
+```{r, echo=FALSE}
 rank.mat <- readRDS("data/rank_mat.rds")
 rank.mat[1:5,1:5]
 ```
