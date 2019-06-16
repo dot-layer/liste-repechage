@@ -18,7 +18,8 @@ kern  <- sapply(temp$m_rank, function(rr){
   sum(temp$v_rank*dnorm(temp$m_rank,rr,2))/sum(dnorm(temp$m_rank,rr,2))
 })
 temp[, kern := kern]
-plot(x = sort(temp$m_rank), y = temp$kern[order(temp$m_rank)], type="l")
+par(mar = c(4,4,0,0))
+plot(x = sort(temp$m_rank), y = sqrt(temp$kern[order(temp$m_rank)]), type="l", xlab="rang moyen", ylab="dév. standard (noyau normal)")
 
 
 afun <- approxfun(x = temp$m_rank[temp$m_rank < 22], y = temp$kern[temp$m_rank < 22], method="linear",
@@ -29,6 +30,8 @@ mat <- as.matrix(subset(dcast(main, ranker ~ player, value.var = "rank"), select
 ij.mat <- t(combn(ncol(mat),2))
 
 mat[is.na(mat)] <- 33
+
+# saveRDS(mat, "data/rank_mat.rds")
 
 D <- matrix(0,ncol(mat),ncol(mat))
 D[ij.mat] <- apply(ij.mat, 1, function(ij){
