@@ -46,8 +46,10 @@ setkey(correction_mapping, player)
 main_temp <- merge(main, correction_mapping, all = TRUE)
 
 main_temp[grepl("Dach", player), player:= "Kirby Dach"]
-
 main <- main_temp[, player := ifelse(is.na(right), player, right)]
+
+
+
 
 fwrite(main, "data/main.R")
 
