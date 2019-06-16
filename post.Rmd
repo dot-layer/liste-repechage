@@ -1,5 +1,5 @@
 ---
-title: "Aggrégation simple classements"
+title: "Aggrégation simple de classements"
 author: "L. Caron, L.-A. Vallière-Lavoie et S. Perreault"
 date: "June 16, 2019"
 output: html_document
@@ -13,7 +13,7 @@ Dans le cadre de la fin de semaine d'analytique de sports récemment organisée 
 Pardonnez le manque d'explication lolk.
 
 ## rvest
-En gros, nous avons *rvest* des listes (mynhldraft.com)[http://www.mynhldraft.com/2019-nhl-draft/2019-nhl-draft-rankings/] :
+En gros, nous avons *rvest* des listes [mynhldraft.com](http://www.mynhldraft.com/2019-nhl-draft/2019-nhl-draft-rankings/) :
 ```
 library(rvest)
 library(data.table)
