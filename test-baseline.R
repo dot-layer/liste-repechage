@@ -26,6 +26,8 @@ by_player <-
             by = "ID")
 
 
+saveRDS(by_player, "data/by_player.rds")
+
 # player_pairs <- expand.grid(by_player$ID,
 #                             by_player$ID) %>% 
 #   unique() %>% 
