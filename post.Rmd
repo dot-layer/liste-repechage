@@ -1,5 +1,5 @@
 ---
-title: "Aggrégation simple de classements"
+title: "Agrégation simple de classements"
 author: "S. Perreault"
 date: "June 16, 2019"
 output: html_document
