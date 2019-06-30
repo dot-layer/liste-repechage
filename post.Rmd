@@ -11,13 +11,13 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Il y a quelques jours, certains membres de la communauté .Layer (y compris moi-même) nous sommes réunis dans un chalet autour d'une thématique commune: l'analyse de données sportives ! Lors de ce week-end, nous avons *brainstormer* sur de potentiels projets reliant le sports et l'analyse de données, ce qui nous entraîné à entammer 3 projets en parralèles:
+Il y a quelques jours, certains membres de la communauté .Layer (y compris moi-même) nous sommes réunis dans un chalet autour d'une thématique commune: l'analyse de données sportives ! Lors de ce week-end, nous avons *brainstormer* sur de potentiels projets reliant le sports et l'analyse de données, ce qui nous entraîné à entamer 3 projets en parallèles:
 
-1. Aggréger différents *draft rankings* pour en former un unique (L-A Vallière-Lavoie, Laurent Caron et moi-même)
+1. Agréger différents *draft rankings* pour en former un unique (L-A Vallière-Lavoie, Laurent Caron et moi-même)
 2. Un *[dashboard]*(https://stecaron.shinyapps.io/shiny-app/) de données permettant d'identifier les meilleurs jeunes joueurs de tennis de l'ATP (Phil B-l, Stéphane Caron, Sam Auclair, John Tremblay et J.P. Le Cavalier)
 3. Un outil pour trouver le bon régime et le bon programme d'entraînement selon des objectifs (Antoine Buteau)
 
-Dans cet article, je vais vous décrire très brièvement notre projet d'aggrégation de listes de repêchages. Le timming était bon puisqu'une semaine après le chalet, c'était le repêchage officiel de la LNH ...
+Dans cet article, je vais vous décrire très brièvement notre projet d’agrégation de listes de repêchages. Le timing était bon puisqu'une semaine après le chalet, c'était le repêchage officiel de la LNH ...
 
 ## Extraire les données
 
@@ -118,11 +118,11 @@ Finalement, la matrice de distances obtenue nous a permis de projeter nos donné
 
 En gardant un espacement constant sur l'axe horizontal, on peut apprécier à quel point Jack Hughes et Kaapo Kakko se démarque du reste (ils étaient toujours premier et deuxième ...).
 
-Comme je l'ai mentionné en introduction, le repêchage officiel de la LNH avait lieu quelques jours après notre première analyse (figure ci-haut). Nous avons donc comparer l'aggrégration des experts avant le repêchage avec les vrais choix ! Les résultats sont présentés dans la figure ci-dessous alors que les noms des joueurs sont accompagnés de leur rang réel et de la différence versus ce qui était prévu dans l'analyse que nous avons fais (entre parenthèses). Les noms de joueurs en gris ont été repêchés au rang prévu, les rouges ont été repêchés plus tard que prévu alors que les verts ont été repêché plus tôt que prévu.
+Comme je l'ai mentionné en introduction, le repêchage officiel de la LNH avait lieu quelques jours après notre première analyse (figure ci-haut). Nous avons donc comparer l'agrégation des experts avant le repêchage avec les vrais choix ! Les résultats sont présentés dans la figure ci-dessous alors que les noms des joueurs sont accompagnés de leur rang réel et de la différence versus ce qui était prévu dans l'analyse que nous avons fais (entre parenthèses). Les noms de joueurs en gris ont été repêchés au rang prévu, les rouges ont été repêchés plus tard que prévu alors que les verts ont été repêché plus tôt que prévu.
 
 ![](plot-after-draft.png)
 
 
-On remarque qu'il n'y a pas eu de suprise concernant Jack Hugues et Kaapo Kakko. Par contre, certains joueurs ont surpris certains experts en étant repêchés plus tôt, par exemple Kirby Dach qui à monté de 4 rangs (ce qui est intéressant considérant la basse incertitude du top 10). Il y aussi Moritz Seider qui a grimpé de 10 rangs en étant repêché 6ème au total par Détroit. Parmi les joueurs qui ont été repêchés plus tard que prévu, on remarque le Russe Arthur Kaliyev et le Québécois Raphaël Lavoie qui ont respectivement dégringolé de 16 et 19 rangs pour finalement aboutir en 2ème ronde. C'est d'ailleurs deux joueurs très talentueux dont certains experts remettaient en question leur éthique de travail ...
+On remarque qu'il n'y a pas eu de surprise concernant Jack Hugues et Kaapo Kakko. Par contre, certains joueurs ont surpris certains experts en étant repêchés plus tôt, par exemple Kirby Dach qui à monté de 4 rangs (ce qui est intéressant considérant la basse incertitude du top 10). Il y aussi Moritz Seider qui a grimpé de 10 rangs en étant repêché 6ème au total par Détroit. Parmi les joueurs qui ont été repêchés plus tard que prévu, on remarque le Russe Arthur Kaliyev et le Québécois Raphaël Lavoie qui ont respectivement dégringolé de 16 et 19 rangs pour finalement aboutir en 2ème ronde. C'est d'ailleurs deux joueurs très talentueux dont certains experts remettaient en question leur éthique de travail ...
 
 À+
