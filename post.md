@@ -7,9 +7,7 @@ output:
     keep_md: true
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+
 
 Il y a quelques jours, certains membres de la communauté .Layer (y compris moi-même) nous sommes réunis dans un chalet autour d'une thématique commune: l'analyse de données sportives ! Lors de ce week-end, nous avons *brainstormer* sur de potentiels projets reliant le sports et l'analyse de données, ce qui nous entraîné à entammer 3 projets en parralèles:
 
@@ -44,10 +42,22 @@ temp <- temp[-1,]
 head(temp)[,1:3]
 ```
 
-```{r rvest, echo=FALSE}
-library(data.table)
-temp <- fread("data/temp_data.csv")
-head(temp)[,1:3]
+
+```
+##    V1 Future Considerations    June 7th
+## 1:  1                       Jack Hughes
+## 2:  2                       Kakko Kaapo
+## 3:  3                       Bowen Byram
+## 4:  4                  Vasili Podkolzin
+## 5:  5                     Alex Turcotte
+## 6:  6                      Peyton Krebs
+##    Russ Cohen    Sportsology    June 7th
+## 1:                           Jack Hughes
+## 2:                           Kaapo Kakko
+## 3:                         Alex Turcotte
+## 4:                      Vasily Podkolzin
+## 5:                           Bowen Byram
+## 6:                         Cole Caufield
 ```
 
 Les 14 listes (nous en avons retiré 2 parce qu'elles concernaient seulement les Européens et les Nord-Américains respectivement) contiennent un classement des 32 meilleurs espoirs (choix de première ronde) pour le repêchage de la LNH selon différents experts.
@@ -90,18 +100,26 @@ by_player <-
 by_player[order(by_player$final_selection),]$player[1:10]
 ```
 
-```{r baseline, echo=FALSE}
-by_player <- readRDS("data/by_player.rds")
-by_player[order(by_player$final_selection),]$player[1:10]
+
+```
+##  [1] "Jack Hughes"      "Kaapo Kakko"      "Bowen Byram"     
+##  [4] "Alex Turcotte"    "Trevor Zegras"    "Kirby Dach"      
+##  [7] "Dylan Cozens"     "Vasili Podkolzin" "Matthew Boldy"   
+## [10] "Peyton Krebs"
 ```
 
 ## Multi-dimensional scaling
 
 Avec le temps qu'il nous restait, nous avons ensuite décidé de construire une matrice de distances (entre les joueurs) calculée en considérant le vecteur des rangs:
 
-```{r, echo=FALSE}
-rank.mat <- readRDS("data/rank_mat.rds")
-rank.mat[1:5,1:5]
+
+```
+##      Albert Johansson Albin Grewe Alex Newhook Alex Turcotte Alex Vlasic
+## [1,]               33          28           15             3          33
+## [2,]               33          33           14             4          25
+## [3,]               33          33           11             3          24
+## [4,]               33          33           18            10          33
+## [5,]               33          33           13             5          33
 ```
 
 Chaque rangée correspond aux prédictions d'un expert. Nous avons remplacé les NA (ceux qui ne sont pas parmi les 32 premiers choix) par des 33. Clairement, ce n'est pas la meilleure chose à faire, les étapes suivantes auraient pu nous aider à faire une imputation plus sensée, mais nous n'avons pas pris le temps...
