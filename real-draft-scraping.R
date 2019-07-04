@@ -38,19 +38,24 @@ data_plot[diff > 0, color := "green"]
 data_plot[diff < 0, color := "red"]
 data_plot[, diff_label := as.character(diff)]
 data_plot[diff > 0, diff_label := paste0("+", diff_label)]
+data_plot[, diff2 := pmin(pmax(diff,-25),25)]
 
 ggplot(data_plot, aes(x=rank, y=sort(score))) +
   geom_point() +
   geom_line() +
-  geom_text(aes(label=paste0(player[order(score)], " (", num[order(score)], " -> ", diff_label[order(score)], ")"), color = color[order(score)]), vjust=-.5, hjust=-.5, size=3, angle=-45, check_overlap = T) +
-  scale_color_manual("drafted", labels = c("Repêché au rang prévu", "Repêché plus tôt que prévu", "Repêché plus tard que prévu"), values = c("#808080", "#008000", "#ff0000"))+
+  geom_text(aes(label=paste0(player[order(score)], " (", num[order(score)], " : ", diff_label[order(score)], ")"), color = diff2[order(score)]), vjust=-.25, hjust=-.25, size=3, angle=-45, check_overlap = T) +
+  # geom_text(aes(label=paste0(player[order(score)], " (", num[order(score)], " : ", diff_label[order(score)], ")"), color = color[order(score)]), vjust=-.5, hjust=-.5, size=3, angle=-45, check_overlap = T) +
+  #scale_color_manual("drafted", labels = c("Repêché au rang prévu", "Repêché plus tôt que prévu", "Repêché plus tard que prévu"), values = c("#808080", "#008000", "#ff0000"))+
+  scale_color_gradientn("drafted", colours = c("#ff3333", "#808080", "#33FF33"))+
   theme_minimal() +
-  theme(axis.title = element_blank(), 
-        axis.text = element_blank(), 
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
         axis.ticks = element_blank(),
-        legend.title = element_blank(),
-        legend.position = "top",
-        legend.text = element_text(size=14)) +
+        legend.position = "none"#,
+  #       legend.text = element_text(size=14)#,
+  #       # legend.key.size = unit(1.5, "cm"),
+  #       # legend.key.width = unit(0.5,"cm") 
+  ) +
   xlim(1,70) +
-  ylim(min(temp$score)-200,max(temp$score))
+  ylim(min(temp$score)-300,max(temp$score))
 
